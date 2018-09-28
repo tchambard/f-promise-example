@@ -17,21 +17,23 @@ describe.only('loops with f-promise', () => {
             durationTable.forEach((duration) => {
                 wait(cb => setTimeout(cb, duration));
             });
+            assert.isAbove(Date.now() - startDate, _.sum(durationTable));
             assert.isBelow(Date.now() - startDate, _.sum(durationTable) + 20);
         }).timeout(10000);
     });
 
-    describe('> Concurrent loop', () => {
+    describe('> Concurrent loop with native array functions', () => {
         it(`> should wait for about ${_.max(durationTable)} ms`, () => {
             const startDate = Date.now();
             map(durationTable, (duration) => {
                 wait(cb => setTimeout(cb, duration));
             });
+            assert.isAbove(Date.now() - startDate, _.max(durationTable));
             assert.isBelow(Date.now() - startDate, _.max(durationTable) as number + 20);
         }).timeout(10000);
     });
 
-    describe('> Concurrent loop with funnel(2)', () => {
+    describe('> Concurrent loop with local funnel(2)', () => {
         it(`> should wait for about ${_.sum(durationTable)/2} ms`, () => {
             const localFunnel = funnel(2);
             const startDate = Date.now();
@@ -42,7 +44,8 @@ describe.only('loops with f-promise', () => {
                 })
             }
             map(durationTable, loopFunction);
-            assert.isBelow(Date.now() - startDate, _.sum(durationTable)/2 as number + 20);
+            assert.isAbove(Date.now() - startDate, _.sum(durationTable)/2);
+            assert.isBelow(Date.now() - startDate, _.sum(durationTable)/2 + 20);
         }).timeout(10000);
     });
 
@@ -61,7 +64,8 @@ describe.only('loops with f-promise', () => {
                 map(durationTable, functionWithTwoConcurrentRunnersMax);
             });
 
-            assert.isBelow(Date.now() - startDate, _.sum(durationTable) as number + 20);
+            assert.isAbove(Date.now() - startDate, _.sum(durationTable));
+            assert.isBelow(Date.now() - startDate, _.sum(durationTable) + 20);
         }).timeout(10000);
     });
 
