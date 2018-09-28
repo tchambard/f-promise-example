@@ -1,0 +1,27 @@
+{
+  "name": "async-await_vs_f-promise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf build",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "lint-fix": "npm run lint -- --fix",
+    "compile": "tsc -v && tsc --pretty",
+    "compile-watch": "tsc --pretty -w",
+    "clean-compile": "npm run clean && npm run compile",
+    "clean-lint-compile": "npm run clean && npm run lint && echo Using TypeScript && npm run compile"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "f-promise": "^1.3.6",
+    "fs-extra": "^7.0.0",
+    "got": "^9.2.2",
+    "source-map-support": "^0.4.15"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.2"
+  }
+}
