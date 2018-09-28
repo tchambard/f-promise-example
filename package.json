@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "npm run clean-compile && mocha --full-trace --recursive --require source-map-support/register 'build/**/*Spec.js'",
     "clean": "rimraf build",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "lint-fix": "npm run lint -- --fix",
@@ -22,6 +23,11 @@
     "source-map-support": "^0.4.15"
   },
   "devDependencies": {
-    "@types/node": "^10.11.2"
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.11.2",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "f-mocha": "^1.1.4",
+    "mocha": "^5.2.0"
   }
 }

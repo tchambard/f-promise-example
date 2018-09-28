@@ -1,15 +1,19 @@
 import 'source-map-support/register';
 import * as got from 'got';
 
-async function functionOne() {
-    await got('https://www.bee.com/url-does-not-exists');
+async function fn3() {
+    await got('https://www.host.com/url-does-not-exists');
 }
 
-async function functionTwo() {
-    await functionOne();
+async function fn2() {
+    await fn3();
 }
 
-functionTwo()
+async function fn1() {
+    await fn2();
+}
+
+fn1()
     .catch((e) => {
-        console.error(`${e.message} : ${e.stack}`);
+        console.error(e.stack);
     });

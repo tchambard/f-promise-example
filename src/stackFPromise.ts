@@ -2,16 +2,20 @@ import 'source-map-support/register';
 import { run, wait } from 'f-promise';
 import * as got from 'got';
 
-function functionOne() {
-    wait(got('https://www.bee.com/url-does-not-exists'));
+function fn3() {
+    wait(got('https://www.host.com/url-does-not-exists'));
 }
 
-function functionTwo() {
-    functionOne();
+function fn2() {
+    fn3();
+}
+
+function fn1() {
+    fn2();
 }
 
 run(() => {
-    functionTwo()
+    fn1();
 }).catch((e) => {
     console.error(e.stack);
 });
