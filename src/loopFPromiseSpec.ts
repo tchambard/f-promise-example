@@ -9,7 +9,7 @@ const durationTable = [
     500,500,500,500
 ];
 
-describe.only('loops with f-promise', () => {
+describe('loops with f-promise', () => {
 
     describe('> Sequential loop', () => {
         it(`> should wait for about ${_.sum(durationTable)} ms`, () => {
@@ -17,7 +17,7 @@ describe.only('loops with f-promise', () => {
             durationTable.forEach((duration) => {
                 wait(cb => setTimeout(cb, duration));
             });
-            assert.isAbove(Date.now() - startDate, _.sum(durationTable));
+            assert.isAtLeast(Date.now() - startDate, _.sum(durationTable));
             assert.isBelow(Date.now() - startDate, _.sum(durationTable) + 20);
         }).timeout(10000);
     });
@@ -28,7 +28,7 @@ describe.only('loops with f-promise', () => {
             map(durationTable, (duration) => {
                 wait(cb => setTimeout(cb, duration));
             });
-            assert.isAbove(Date.now() - startDate, _.max(durationTable));
+            assert.isAtLeast(Date.now() - startDate, _.max(durationTable));
             assert.isBelow(Date.now() - startDate, _.max(durationTable) as number + 20);
         }).timeout(10000);
     });
@@ -44,7 +44,7 @@ describe.only('loops with f-promise', () => {
                 })
             }
             map(durationTable, loopFunction);
-            assert.isAbove(Date.now() - startDate, _.sum(durationTable)/2);
+            assert.isAtLeast(Date.now() - startDate, _.sum(durationTable)/2);
             assert.isBelow(Date.now() - startDate, _.sum(durationTable)/2 + 20);
         }).timeout(10000);
     });
@@ -64,7 +64,7 @@ describe.only('loops with f-promise', () => {
                 map(durationTable, functionWithTwoConcurrentRunnersMax);
             });
 
-            assert.isAbove(Date.now() - startDate, _.sum(durationTable));
+            assert.isAtLeast(Date.now() - startDate, _.sum(durationTable));
             assert.isBelow(Date.now() - startDate, _.sum(durationTable) + 20);
         }).timeout(10000);
     });

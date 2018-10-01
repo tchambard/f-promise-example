@@ -8,7 +8,7 @@ const durationTable = [
     500,500,500,500
 ];
 
-describe.only('loops with async/await and bluebird', () => {
+describe('loops with async/await and bluebird', () => {
 
     describe('> Sequential loop', () => {
         it(`> should wait for about ${_.sum(durationTable)} ms`, async () => {
@@ -17,7 +17,7 @@ describe.only('loops with async/await and bluebird', () => {
                 await bluebird.delay(duration);
             });
 
-            assert.isAbove(Date.now() - startDate, _.sum(durationTable) as number);
+            assert.isAtLeast(Date.now() - startDate, _.sum(durationTable) as number);
             assert.isBelow(Date.now() - startDate, _.sum(durationTable) + 20);
         }).timeout(10000);
     });
@@ -29,7 +29,7 @@ describe.only('loops with async/await and bluebird', () => {
                 await bluebird.delay(duration);
             });
 
-            assert.isAbove(Date.now() - startDate, _.max(durationTable) as number);
+            assert.isAtLeast(Date.now() - startDate, _.max(durationTable) as number);
             assert.isBelow(Date.now() - startDate, _.max(durationTable) as number + 20);
         }).timeout(10000);
     });
@@ -43,7 +43,7 @@ describe.only('loops with async/await and bluebird', () => {
             }
             await bluebird.map(durationTable, functionWithTwoConcurrentRunnersMax, { concurrency: 2 });
 
-            assert.isAbove(Date.now() - startDate, _.sum(durationTable)/2 as number);
+            assert.isAtLeast(Date.now() - startDate, _.sum(durationTable)/2 as number);
             assert.isBelow(Date.now() - startDate, _.sum(durationTable)/2 as number + 20);
         }).timeout(10000);
     });
@@ -60,7 +60,7 @@ describe.only('loops with async/await and bluebird', () => {
                 await bluebird.map(durationTable, functionWithTwoConcurrentRunnersMax, { concurrency: 2 });
             });
 
-            assert.isAbove(Date.now() - startDate, _.sum(durationTable) as number);
+            assert.isAtLeast(Date.now() - startDate, _.sum(durationTable) as number);
             assert.isBelow(Date.now() - startDate, _.sum(durationTable) as number + 20);
         }).timeout(10000);
     });
@@ -80,7 +80,7 @@ describe.only('loops with async/await and bluebird', () => {
                 await bluebird.map(durationTable, loopFunction);
             });
 
-            assert.isAbove(Date.now() - startDate, _.sum(durationTable) as number);
+            assert.isAtLeast(Date.now() - startDate, _.sum(durationTable) as number);
             assert.isBelow(Date.now() - startDate, _.sum(durationTable) as number + 20);
         }).timeout(10000);
     });
