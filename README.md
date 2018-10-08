@@ -41,4 +41,7 @@
 ### Communauté
 - stars f-promise: 12
 - stars fibers: ~3000
-- SAGE: chiffres à venir
+- stars streamlinejs: ~900
+utilisé par Microsoft pour [azure-cli](https://github.com/Azure/azure-xplat-cli/blob/dev/package.json#L103) et pour le premier port de [vim](http://coolwanglu.github.io/vim.js/streamlinejs/vim.html) sur browser 
+- SAGE: 17 personnes (14 plateforme, 3 applicatifs)  sur le projet etna. (A terme + de 100 personnes).  
+Nombre de clients X3 (Enterprise Management), c'est de l'ordre de 5000, avec des entreprises comme Michelin et Vinci en France
