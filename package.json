@@ -20,7 +20,7 @@
     "f-promise": "^1.4.0",
     "fs-extra": "^7.0.1",
     "got": "^9.6.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "semaphore-async-await": "^1.5.1",
     "source-map-support": "^0.4.15"
   },
