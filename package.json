@@ -19,7 +19,7 @@
     "bluebird": "^3.7.0",
     "f-promise": "^1.4.0",
     "fs-extra": "^7.0.1",
-    "got": "^9.6.0",
+    "got": "^11.8.5",
     "lodash": "^4.17.15",
     "semaphore-async-await": "^1.5.1",
     "source-map-support": "^0.4.15"
